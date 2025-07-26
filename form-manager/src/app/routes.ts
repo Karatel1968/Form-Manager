@@ -1,5 +1,5 @@
 import { UserCreatePage } from "../pages/UserCreate/UserCreatePage";
-import {Routes} from 'react-router-dom';
+import type {Routes} from 'react-router-dom';
 import { Route } from "react-router-dom";
 import Layout from "../widgets/Layout/Layout";
 import { FC } from "react";
@@ -9,9 +9,9 @@ const AppRoutes: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
+        /*<Route index element={<HomePage />} />
         <Route path="user/create" element={<UserCreatePage />} />
-      </Route>
+      </Route>*/
     </Routes>
   );
 };
