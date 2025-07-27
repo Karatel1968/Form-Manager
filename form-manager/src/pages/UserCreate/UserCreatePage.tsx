@@ -6,18 +6,18 @@ import { FormikForm } from './Form';
 
 
 export const UserCreatePage = () => {
-  const { token } = useAppSelector(state => state.auth);
+  //const { token } = useAppSelector(state => state.auth);
   const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
 
-  const handleSubmit = async (values: UserFormData) => {
-    try {
+  const handleSubmit = async (/*values: UserFormData*/) => {
+    /*try {
       await createUser(values, token);
       messageApi.success('Пользователь успешно создан');
       navigate('/');
     } catch (error) {
       messageApi.error(error instanceof Error ? error.message : 'Ошибка при создании пользователя');
-    }
+    }*/
   };
 
   return (

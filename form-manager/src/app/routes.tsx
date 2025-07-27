@@ -3,7 +3,6 @@ import {Routes} from 'react-router-dom';
 import { Route } from "react-router-dom";
 import Layout from "../widgets/Layout/Layout";
 import HomePage from "../pages/HomePage/HomePage";
-import { BrowserRouter } from "react-router-dom";
 
 function AppRoutes() {
   return (  

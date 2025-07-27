@@ -10,13 +10,6 @@ const Navigation = () => {
         <li>
           <NavLink to="/user/create">Создать пользователя</NavLink>
         </li>
-        
-        <li>
-          <NavLink to="/formik">Formik</NavLink>
-        </li>
-        <li>
-          <NavLink to="/hookform">React Hook Form</NavLink>
-        </li>
       </ul>
     </nav>
   );
