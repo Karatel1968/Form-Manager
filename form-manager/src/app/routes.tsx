@@ -1,19 +1,19 @@
-import { UserCreatePage } from "../pages/UserCreate/UserCreatePage";
-import type {Routes} from 'react-router-dom';
+import { UserCreatePage } from '../pages/UserCreate/UserCreatePage';
+import {Routes} from 'react-router-dom';
 import { Route } from "react-router-dom";
 import Layout from "../widgets/Layout/Layout";
-import { FC } from "react";
 import HomePage from "../pages/HomePage/HomePage";
+import { BrowserRouter } from "react-router-dom";
 
-const AppRoutes: FC = () => {
-  return (
+function AppRoutes() {
+  return (  
     <Routes>
       <Route path="/" element={<Layout />}>
-        /*<Route index element={<HomePage />} />
+        <Route index element={<HomePage />} />
         <Route path="user/create" element={<UserCreatePage />} />
-      </Route>*/
+      </Route>
     </Routes>
-  );
-};
+  )
+}
 
 export default AppRoutes;

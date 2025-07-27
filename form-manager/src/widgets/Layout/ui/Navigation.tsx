@@ -10,7 +10,7 @@ const Navigation = () => {
         <li>
           <NavLink to="/user/create">Создать пользователя</NavLink>
         </li>
-        {/* Бонус: переключатель форм */}
+        
         <li>
           <NavLink to="/formik">Formik</NavLink>
         </li>

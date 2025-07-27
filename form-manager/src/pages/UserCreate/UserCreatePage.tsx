@@ -1,40 +1,34 @@
-import { Formik, Form, Field } from 'formik';
-import { userSchema } from '../../shared/lib/validationSchemas';
+import { useNavigate } from 'react-router-dom';
+import { createUser } from '../../shared/api/users';
+import { Button, message } from 'antd';
+import { FormikForm } from './Form';
 
-export const UserCreatePage = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
+
+
+export const UserCreatePage = () => {
+  const { token } = useAppSelector(state => state.auth);
+  const navigate = useNavigate();
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const handleSubmit = async (values: UserFormData) => {
+    try {
+      await createUser(values, token);
+      messageApi.success('Пользователь успешно создан');
+      navigate('/');
+    } catch (error) {
+      messageApi.error(error instanceof Error ? error.message : 'Ошибка при создании пользователя');
+    }
+  };
+
   return (
-    <Formik
-      initialValues={{
-        name: '',
-        surName: '',
-        password: '',
-        confirmPassword: '',
-        fullName: '',
-        email: '',
-        birthDate: '',
-        telephone: '',
-        employment: '',
-        userAgreement: false
-      }}
-      validationSchema={userSchema}
-      onSubmit={onSubmit}
-    >
-        {({ values, setFieldValue, errors, touched }) => (
-        <Form>
-          <div>
-            <label>Имя</label>
-            <Field 
-              name="name" 
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                setFieldValue('name', e.target.value);
-                setFieldValue('fullName', `${e.target.value} ${values.surName}`.trim());
-              }}
-            />
-            {errors.name && touched.name && <div>{errors.name}</div>}
-          </div>
-          <button type="submit">Создать</button>
-        </Form>
-      )}
-    </Formik>
+    <div className="user-create-page">
+      {contextHolder}
+      <h1>Создание пользователя</h1>
+      <Button type="link" onClick={() => navigate('/')} style={{ marginBottom: 16 }}>
+        ← Назад к списку
+      </Button>
+
+      <FormikForm onSubmit={handleSubmit} />
+    </div>
   );
-}
+};
