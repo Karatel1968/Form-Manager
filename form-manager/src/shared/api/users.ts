@@ -3,7 +3,7 @@ import { User, UpdateUserDto, CreateUserDto } from '../model/userInterfaces';
 
 const API_URL = 'http://localhost:3001/api/v1/users';
 
-export const getUsers = async (token: string): Promise<User[]> => {
+export const getUsers = async (token: string | null): Promise<User[]> => {
   try {
     const response = await axios.get(API_URL, {
       headers: { Authorization: `Bearer ${token}` }
@@ -17,7 +17,7 @@ export const getUsers = async (token: string): Promise<User[]> => {
   }
 };
 
-export const createUser = async (userData: CreateUserDto, token: string): Promise<User> => {
+export const createUser = async (userData: CreateUserDto, token: string | null): Promise<User> => {
   try {
     const response = await axios.post(API_URL, userData, {
       headers: { 
@@ -38,7 +38,7 @@ export const createUser = async (userData: CreateUserDto, token: string): Promis
 export const updateUser = async (
   id: string,
   userData: UpdateUserDto,
-  token: string
+  token: string | null
 ): Promise<User> => {
   try {
     const response = await axios.put(`${API_URL}/${id}`, userData, {
@@ -57,7 +57,7 @@ export const updateUser = async (
 };
 
 
-export const deleteUser = async (id: string, token: string): Promise<void> => {
+export const deleteUser = async (id: string, token: string | null): Promise<void> => {
   try {
     await axios.delete(`${API_URL}/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
@@ -71,7 +71,7 @@ export const deleteUser = async (id: string, token: string): Promise<void> => {
 };
 
 
-export const getUserById = async (id: string, token: string): Promise<User> => {
+export const getUserById = async (id: string, token: string | null): Promise<User> => {
   try {
     const response = await axios.get(`${API_URL}/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
