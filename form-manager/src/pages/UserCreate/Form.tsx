@@ -3,6 +3,7 @@ import { userSchema } from '../../shared/lib/validationSchemas';
 import { ErrorMessage } from 'formik';
 import { DatePicker, Select, Checkbox, Button } from 'antd';
 import type { DatePickerProps } from 'antd';
+import {UserFormData} from '../../shared/model/userInterfaces'
 
 const employmentOptions = [
   { value: 'employed', label: 'Работает' },
@@ -10,7 +11,7 @@ const employmentOptions = [
   { value: 'student', label: 'Студент' },
 ];
 
-export const FormikForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
+export const FormikForm = ({ onSubmit }: { onSubmit: (values: UserFormData) => void }) => {
   return (
     <Formik
       initialValues={{
@@ -109,7 +110,14 @@ export const FormikForm = ({ onSubmit }: { onSubmit: (values: any) => void }) =>
             <ErrorMessage name="userAgreement" component="div" className="error-message" />
           </div>
 
-          <button type="submit">Создать</button>
+          <Button 
+            type="primary" 
+            htmlType="submit" 
+            /*disabled={isSubmitting}
+            loading={isSubmitting}*/
+          >
+            Создать пользователя
+          </Button>
         </Form>
       )}
     </Formik>
